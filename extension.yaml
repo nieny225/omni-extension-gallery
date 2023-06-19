@@ -1,0 +1,7 @@
+title: "Media Gallery"
+version: "1.0.0"
+author: "Nick Yang"
+description: "A light gallery extension for Omnitool.
+origin: https://github.com/nieny225/omni-extension-gallery
+client:
+  addToWorkbench: true

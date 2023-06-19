@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!-- Include CSS for lightGallery -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2/dist/css/lightgallery.min.css" />
+
+        <!-- Include jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Include lightGallery and its video plugin -->
+        <script src="https://cdn.jsdelivr.net/npm/lightgallery@2/dist/js/lightgallery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lg-video@2/dist/lg-video.min.js"></script>
+    </head>
+    <body>
+        <!-- Gallery container -->
+        <div id="lightgallery">
+            <!-- add your images and videos here -->
+        </div>
+
+        <!-- Button to upload file -->
+        <button id="uploadBtn">Upload file</button>
+
+        <!-- Button to output selected media -->
+        <button id="outputBtn">Use in chat</button>
+
+        <!-- Chat box to output media -->
+        <div id="chatBox"></div>
+
+        <!-- Input for file upload -->
+        <input type="file" id="fileUpload" style="display:none"/>
+
+        <div id="lightgallery">
+            <a href="path/to/image1.jpg">
+                <img src="path/to/thumb/image1.jpg" />
+            </a>
+            <a href="path/to/video.mp4">
+                <img src="path/to/thumb/video.jpg" />
+            </a>
+        </div>
+        
+    </body>
+</html>
+<script>
+    $(document).ready(function() {
+        // Initialize lightGallery
+        var $lg = $('#lightgallery').lightGallery();
+
+        // Function to upload file
+        $('#uploadBtn').click(function() {
+            $('#fileUpload').trigger('click');
+        });
+
+        $('#fileUpload').change(function(e) {
+            // You need to have your own server-side upload functionality
+            var files = e.target.files;
+            console.log(files);
+            // Process your file upload to server here
+        });
+
+        // Function to output selected media
+        $('#outputBtn').click(function() {
+            var src = $lg.data('lightGallery').getSlideItemSrc();
+            $('#chatBox').append('<img src="' + src + '"/>');
+        });
+    });
+</script>
